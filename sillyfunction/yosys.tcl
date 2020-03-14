@@ -1,3 +1,4 @@
 read -sv top.v
-synth -noabc
+proc
+opt
 show
