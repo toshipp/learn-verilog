@@ -16,10 +16,14 @@ int main(int argc, char** argv, char** env) {
     top->b = 0;
     top->c = 0;
 
-    while (!Verilated::gotFinish()) {
+    while(!Verilated::gotFinish()) {
         top->eval();
         main_time++;
         tfp->dump(main_time);
+
+        if(main_time > 0) {
+            break;
+        }
     }
     tfp->close();
     top->final();
