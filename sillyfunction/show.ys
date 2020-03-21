@@ -1,4 +1,4 @@
-read -sv top.v
+read -sv sillyfunction.sv
 proc
 opt
 techmap

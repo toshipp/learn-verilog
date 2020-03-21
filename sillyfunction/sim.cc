@@ -1,4 +1,4 @@
-#include "Vtop.h"
+#include "Vsillyfunction.h"
 #include "verilated_vcd_c.h"
 #include <iostream>
 #include <memory>
@@ -6,18 +6,18 @@
 int main(int argc, char** argv, char** env) {
     Verilated::commandArgs(argc, argv);
     Verilated::traceEverOn(true);
-    auto top = std::make_unique<Vtop>();
+    auto sillyfunction = std::make_unique<Vsillyfunction>();
     auto tfp = std::make_unique<VerilatedVcdC>();
     vluint64_t main_time = 0;
-    top->trace(tfp.get(), 99);
+    sillyfunction->trace(tfp.get(), 99);
     tfp->open("sim.vcd");
 
-    top->a = 0;
-    top->b = 0;
-    top->c = 0;
+    sillyfunction->a = 0;
+    sillyfunction->b = 0;
+    sillyfunction->c = 0;
 
     while(!Verilated::gotFinish()) {
-        top->eval();
+        sillyfunction->eval();
         main_time++;
         tfp->dump(main_time);
 
@@ -26,6 +26,6 @@ int main(int argc, char** argv, char** env) {
         }
     }
     tfp->close();
-    top->final();
-    std::cout << "y: " << int(top->y) << std::endl;;
+    sillyfunction->final();
+    std::cout << "y: " << int(sillyfunction->y) << std::endl;;
 }
