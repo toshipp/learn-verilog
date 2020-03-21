@@ -5,3 +5,9 @@ all:
 
 show:
 	yosys -s show.ys
+
+testbench1.vvp: sillyfunction.sv testbench1.sv
+	iverilog -g2005-sv -o $@ $^
+
+testbench2.vvp: sillyfunction.sv testbench2.sv
+	iverilog -g2005-sv -o $@ $^
